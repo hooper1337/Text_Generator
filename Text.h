@@ -40,12 +40,13 @@ void inputOutputText::receiveInput()
 
 string inputOutputText::ironicText()
 {
+    text[0] = tolower(text[0]);
     for(int i=1; i<text.length(); i++)
     {
         if(i % 2 == 0)
-            text[i] = toupper(text[i]);
-        else
             text[i] = tolower(text[i]);
+        else
+            text[i] = toupper(text[i]);  
     }
     return text;
 }
