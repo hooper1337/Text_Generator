@@ -9,32 +9,28 @@ class inputOutputText
 {
 private:
     string text;
-    int opt;
     string output[10];
 public:
-    inputOutputText(string t="NULL", int o=0): text(t), opt(o){}
+    inputOutputText(string t="NULL", int o=0): text(t){}
     void receiveInput();
     string ironicText();
+    string capitalLetter();
+    string lowerLetter();
+    void showResults();
 };
 
 void inputOutputText::receiveInput()
 {
-    cout << "\nWrite your initial sentence/text!\n";
-    while(1)
-    {
-        getline(cin, text);
-
-        if(text == "end")
-            exit(EXIT_SUCCESS);
+    cout << "\nWrite your initial sentence/text!\n" << endl << ">";
+    getline(cin, text);
+    
+    if(text == "end")
+        exit(EXIT_SUCCESS);
         
-        cout << "\nWhat type of text do you want?\n";
-        cin >> opt;
-
-        if(opt == 1)
-            output[0] = ironicText();
-
-        cout << output[0];
-    }
+    output[0] = ironicText();
+    output[1] = capitalLetter();
+    output[2] = lowerLetter();
+    return;
 }
 
 string inputOutputText::ironicText()
@@ -45,8 +41,31 @@ string inputOutputText::ironicText()
         if(islower(text[i-1]))
             text[i] = toupper(text[i]);
         else
-            text[i] = tolower(text[i]);
-            
+            text[i] = tolower(text[i]);    
     }
     return text;
+}
+
+string inputOutputText::capitalLetter()
+{
+    for(int i=0; i<text.length(); i++)
+        text[i] = toupper(text[i]);
+    return text;
+}
+
+string inputOutputText::lowerLetter()
+{
+    for(int i=0; i<text.length(); i++)
+        text[i] = tolower(text[i]);
+    return text;
+}
+
+void inputOutputText::showResults()
+{
+    cout << "\n\nRESULTS!\n";
+    cout << "\nIronic text\n\n" << output[0] << endl << endl;
+    cout << "--------------";
+    cout << "\n\nFull capital letter\n\n" << output[1] << endl << endl;
+    cout << "--------------";
+    cout << "\n\nFull lower letter\n\n" << output[2] << endl;
 }
