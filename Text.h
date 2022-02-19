@@ -19,11 +19,10 @@ public:
 
 void inputOutputText::receiveInput()
 {
-    string receive;
     cout << "\nWrite your initial sentence/text!\n";
     while(1)
     {
-        cin >> text;
+        getline(cin, text);
 
         if(text == "end")
             exit(EXIT_SUCCESS);
@@ -43,10 +42,11 @@ string inputOutputText::ironicText()
     text[0] = tolower(text[0]);
     for(int i=1; i<text.length(); i++)
     {
-        if(i % 2 == 0)
-            text[i] = tolower(text[i]);
+        if(islower(text[i-1]))
+            text[i] = toupper(text[i]);
         else
-            text[i] = toupper(text[i]);  
+            text[i] = tolower(text[i]);
+            
     }
     return text;
 }
