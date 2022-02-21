@@ -23,6 +23,8 @@ public:
 
 void inputOutputText::receiveInput()
 {
+    while(text != "end")
+    {
     cout << "\nWrite your initial sentence/text!\n" << endl << ">";
     getline(cin, text);
     
@@ -33,7 +35,9 @@ void inputOutputText::receiveInput()
     output[1] = capitalLetter();
     output[2] = lowerLetter();
     output[3] = stringToBinary();
-    return;
+    showResults();
+    }
+    exit(EXIT_SUCCESS);
 }
 
 string inputOutputText::ironicText()
