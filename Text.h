@@ -23,6 +23,8 @@ public:
 
 void inputOutputText::receiveInput()
 {
+    cout << "\nTEXT GENERATOR\n\n";
+    cout << "\nWrite end to close the program!\n";
     while(text != "end")
     {
     cout << "\nWrite your initial sentence/text!\n" << endl << ">";
